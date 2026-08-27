@@ -89,7 +89,7 @@ public class ListDemo
 
        for (String n : staff){
         if (n.equals ("Tony")){
-            staff.add("Peter")
+            staff.add("Peter");
         }
        }
 
