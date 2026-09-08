@@ -1,5 +1,6 @@
 import java.util.Scanner;
-
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 /**
  * A program that implements the sieve of Eratosthenes.
@@ -12,8 +13,19 @@ public class Sieve
         System.out.println("Compute primes up to which integer?");
         int n = in.nextInt();
 
-        // Your work goes here
-        . . .
+        SortedSet<Integer> primes = new TreeSet<>();
+        for (int i = 2; i <= n; i++) {
+            primes.add(i);
+        }
+        int max = (int) Math.sqrt(n);
+        for (int i = 2; i <= max; i++) {
+            if (primes.contains(i)){
+                for (int j = 2*i;j<=n;j+=i){
+                    primes.remove(j);
+                }
+            }
+        }
+        System.out.print(primes);
 
 
 
