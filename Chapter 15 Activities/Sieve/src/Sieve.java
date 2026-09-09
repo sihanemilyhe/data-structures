@@ -27,11 +27,5 @@ public class Sieve
         }
         System.out.print(primes);
 
-
-
-
-
-
-
     }
 }
