@@ -12,29 +12,30 @@ public class FirstLetterMap
 {
     public static void main(String[] args)
     {
+        Map frequencies = new TreeMap<>();
         String filename = "src/test1.txt";
 
         try (Scanner in = new Scanner(new File(filename)))
         {
 
-            // Create your map here
-            ...
+            Map<Character,Set<String>> words=  new HashMap<>();
 
             while (in.hasNext())
             {
                 String word = clean(in.next());
                 Character c = word.charAt(0);
+                Integer count = (Integer) frequencies.get(c);
+                if (words.containsKey(c)){
+                    frequencies.put(c,word);
 
-                // Update the map here
-                // Modify Worked Example 15.1
-                . . .
+                }
 
 
             }
 
             // Print the map here in this form
             // a: [a, able, aardvark]
-            . . .
+           
         } catch (FileNotFoundException e)
         {
             System.out.println("Cannot open: " + filename);

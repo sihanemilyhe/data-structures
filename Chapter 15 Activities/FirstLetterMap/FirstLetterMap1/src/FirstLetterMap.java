@@ -17,8 +17,7 @@ public class FirstLetterMap
         try (Scanner in = new Scanner(new File(filename)))
         {
 
-            // Create your map here
-            ...
+            Map<Character,Set<String>> words = new HashMap<>();
 
             while (in.hasNext())
             {
