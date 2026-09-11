@@ -13,7 +13,7 @@ public class FirstLetterMap
     public static void main(String[] args)
     {
         Map frequencies = new TreeMap<>();
-        String filename = "src/test1.txt";
+        String filename = "Chapter 15 Activities/FirstLetterMap/FirstLetterMap2/src/test1.txt";
 
         try (Scanner in = new Scanner(new File(filename)))
         {
@@ -24,9 +24,14 @@ public class FirstLetterMap
             {
                 String word = clean(in.next());
                 Character c = word.charAt(0);
-                Integer count = (Integer) frequencies.get(c);
-                if (words.containsKey(c)){
-                    frequencies.put(c,word);
+                Set<String> wordSet = words.get(c);
+                if (wordSet == null) {
+                    wordSet = new HashSet<>();
+                    words.put(c,wordSet);
+                }
+                wordSet.add(word);
+                
+
 
                 }
 
@@ -35,12 +40,16 @@ public class FirstLetterMap
 
             // Print the map here in this form
             // a: [a, able, aardvark]
-           
-        } catch (FileNotFoundException e)
+            Set<String> keys = words.keySet();
+            for(String key: keys) {
+            System.out.println(key +words.get(key));
+            }
+         catch (FileNotFoundException e)
         {
             System.out.println("Cannot open: " + filename);
         }
     }
+    
 
     public static String clean(String s)
     {

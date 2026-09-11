@@ -10,7 +10,6 @@ public class Gradebook
     {
         Scanner in = new Scanner(System.in);
 
-        . . .
 
         boolean done = false;
         while(!done)
