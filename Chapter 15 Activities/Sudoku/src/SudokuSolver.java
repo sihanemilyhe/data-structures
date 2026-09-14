@@ -172,7 +172,7 @@ public class SudokuSolver {
          *  corresponding square set in the list
         */
 
-        return row + (col / M);
+        return (row / M) * M + (col / M);
     }
 
     @Override
