@@ -12,12 +12,12 @@ public class StringLengthMap
 {
     public static void main(String[] args) throws FileNotFoundException
     {
-        String filename = "src/test1.txt";
+        String filename = "Chapter 15 Activities/StringLengthMap/StringLengthMap.java/src/test1.txt";
 
         try (Scanner in = new Scanner(new File(filename)))
         {
 
-            // Create your map here
+            Map<Integer, String> words = new TreeMap<>();
             
 
             while (in.hasNext())
@@ -25,15 +25,21 @@ public class StringLengthMap
                 String word = clean(in.next());
                 Integer len = word.length();
 
-                // Update the map here
-                // Modify Worked Example 15.1
-                
+                String wordList = words.get(len);
+                if (wordList ==null)
+                {
+                    words.put(len,word);
+                }
+                else {
+                    words.put(len,wordList+", "+word);
+                }
 
 
             }
 
-            // Print the strings, in increasing order of their length
-            // Use this format: 1: i, a, i
+            for (Integer len: words.keySet()){
+                System.out.println(len+":"+words.get(len));
+            }
         } catch (FileNotFoundException e)
         {
             System.out.println("Cannot open: " + filename);

@@ -17,7 +17,7 @@ public class FirstLetterMap
         try (Scanner in = new Scanner(new File(filename)))
         {
 
-            Map<Character,Set<String>> words = new HashMap<>();
+            Map<Character,Set<String>> words = new TreeMap<>();
 
             while (in.hasNext())
             {
