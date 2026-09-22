@@ -3,7 +3,7 @@ public class Grid
 {
     private static final int SIZE = 10;
     int[][] pixels = new int[SIZE][SIZE];
-    Stack<Pair> pairs = new Stack<>();
+    Stack<Pair> cords = new Stack<>();
 
     /**
      * Flood fill, starting with the given row and column.
@@ -11,9 +11,18 @@ public class Grid
     public void floodfill(int row, int column)
     {
         Pair block = new Pair(row, column);
-        while (block.getRow()!=0&&block.getColumn()!=0){
-            
+        cords.push(block);
+        while(!cords.isEmpty()){
+            cords.pop();
         }
+        int k=1;
+        for(int i=0;i<SIZE;i++){
+            for (int j=0;j<SIZE;j++){
+                pixels[i][j] = k;
+                k++;
+            }
+        }
+        
     }
 
     public String toString()
