@@ -17,13 +17,53 @@ public class HTMLChecker
 {
     public static void main(String[] args)
     {
-        String filename = "src/TagSample1.html";
+        String filename = "Chapter 15 Activities/HTMLChecker/src/TagSample1.html";
 
         try (Scanner in = new Scanner(new File(filename)))
         {
-            // Your code goes here
-            . . .
+            Stack<String> tags = new Stack<String>();
+            boolean valid = true;
 
+            while (in.hasNext())
+            {
+                String tag = in.next();
+                if (!tag.startsWith("</"))
+                {
+                    tags.push(tag);
+                }
+                else
+                {
+                    if (tags.size() == 0)
+                    {
+                        valid = false;
+                        break;
+                    }
+
+                    String openingTag = tags.pop();
+
+                    String expectedClosingTag =
+                        "</" + openingTag.substring(1);
+
+                    if (!tag.equals(expectedClosingTag))
+                    {
+                        valid = false;
+                        break;
+                    }
+                }
+            }
+            if (tags.size() != 0)
+            {
+                valid = false;
+            }
+
+            if (valid)
+            {
+                System.out.println("The HTML tags are in correct order.");
+            }
+            else
+            {
+                System.out.println("The HTML tags are not in correct order.");
+            }
 
         } catch (FileNotFoundException e)
         {

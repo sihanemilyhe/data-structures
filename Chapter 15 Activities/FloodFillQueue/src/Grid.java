@@ -12,18 +12,41 @@ public class Grid
     {
         Pair block = new Pair(row, column);
         cords.push(block);
-        while(!cords.isEmpty()){
-            cords.pop();
-        }
-        int k=1;
-        for(int i=0;i<SIZE;i++){
-            for (int j=0;j<SIZE;j++){
-                pixels[i][j] = k;
-                k++;
+        int fillValue = 1;
+
+        while (!cords.isEmpty())
+        {
+            Pair current = cords.pop();
+            int r = current.getRow();
+            int c = current.getColumn();
+        
+
+         if (r >= 0 && r < SIZE && c >= 0 && c < SIZE && pixels[r][c] == 0)
+            {
+                 pixels[r][c] = fillValue;
+                fillValue++;
+                if (r - 1 >= 0 && r - 1 < SIZE && c >= 0 && c < SIZE && pixels[r - 1][c] == 0)
+                {
+                    cords.push(new Pair(r - 1, c));
+                }
+                if (r >= 0 && r < SIZE && c + 1 >= 0 && c + 1 < SIZE && pixels[r][c + 1] == 0)
+                {
+                    cords.push(new Pair(r, c + 1));
+                }
+                if (r + 1 >= 0 && r + 1 < SIZE && c >= 0 && c < SIZE && pixels[r + 1][c] == 0)
+                {
+                    cords.push(new Pair(r + 1, c));
+                }
+                if (r >= 0 && r < SIZE && c - 1 >= 0 && c - 1 < SIZE && pixels[r][c - 1] == 0)
+                {
+                    cords.push(new Pair(r, c - 1));
+                }
             }
         }
-        
+
     }
+
+    
 
     public String toString()
     {
