@@ -28,7 +28,14 @@ public class LinkedList
     */
     public int size()
     {
-       // ...
+       int count = 0;
+       Node current = new Node();
+       current = first;
+       while(current!=null){
+        count++;
+        current = current.next;
+       }
+       return count;
     }
 
     /**
@@ -38,7 +45,17 @@ public class LinkedList
     */
     public boolean contains(Object obj)
     {
-        // ...
+        boolean contains = false;
+        Node current = new Node();
+        while(current!=null){
+            if (current.data == obj){
+                contains = true;
+            }
+            else {
+                current = current.next;
+            }
+        }
+        return contains;
     }
 
     /**
@@ -48,7 +65,7 @@ public class LinkedList
     */
     public static boolean contains(Node start, Object obj)
     {
-        // ...
+        
     }
 
     /**

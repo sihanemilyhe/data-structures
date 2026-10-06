@@ -23,11 +23,14 @@ public class LinkedListQueue
     */
     public void firstToLast()
     {
-        . . .
+            Object space = new Object();
+            space = head.data;
+            head = head.next;
+            add(space);
 
-
-
-    }
+        }
+    
+    
 
     /**
         Checks whether this queue is empty.
